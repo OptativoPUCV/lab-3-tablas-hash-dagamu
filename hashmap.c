@@ -58,6 +58,11 @@ HashMap * createMap(long capacity) {
     map->capacity = capacity;
     map->size = 0;
     map->current = -1;
+
+    for (int i = 0; i < capacity; i++) 
+        map->buckets[i] = NULL;
+    
+
     return map;
 }
 
