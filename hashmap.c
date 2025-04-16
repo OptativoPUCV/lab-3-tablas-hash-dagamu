@@ -17,7 +17,7 @@ struct HashMap {
 };
 
 Pair * createPair( char * key,  void * value) {
-    Pair * new = (Pair *)malloc(sizeof(Pair));
+    Pair * new = (Pair *) malloc(sizeof(Pair));
     new->key = key;
     new->value = value;
     return new;
@@ -79,7 +79,6 @@ HashMap * createMap(long capacity) {
 
     for (int i = 0; i < capacity; i++) 
         map->buckets[i] = NULL;
-    
 
     return map;
 }
@@ -122,11 +121,11 @@ Pair * firstMap(HashMap * map) {
 }
 
 Pair * nextMap(HashMap * map) {
-    for (int i = map->current + 1; i < map->capacity; i++) {
+    for (int i = map->current + 1; i < map->capacity; i++) 
         if (map->buckets[i] != NULL && map->buckets[i]->key != NULL) {
             map->current = i;
             return map->buckets[i];
         }
-    }
+    
     return NULL;
 }
