@@ -42,9 +42,9 @@ int is_equal(void* key1, void* key2){
 void insertMap(HashMap * map, char * key, void * value) {
 
     long index = hash(key, map->capacity);
-    while (map->buckets[index] != NULL) {
+    while (map->buckets[index] != NULL)
         index = (index + 1) % map->capacity;
-    }
+    
     map->buckets[index] = createPair(key, value);
     map->size++;
 
@@ -79,7 +79,13 @@ void eraseMap(HashMap * map,  char * key) {
 
 Pair * searchMap(HashMap * map,  char * key) {   
 
-
+    long index = hash(key, map->capacity);
+    while (map->buckets[index] != NULL) {
+        if (strcmp(map->buckets[index]->key, key) == 0) {
+            return map->buckets[index];
+        }
+        index = (index + 1) % map->capacity;
+    }
     return NULL;
 }
 
