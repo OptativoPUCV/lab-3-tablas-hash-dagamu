@@ -80,8 +80,12 @@ void eraseMap(HashMap * map,  char * key) {
             free(map->buckets[index]);
             map->buckets[index] = NULL;
             map->size--;
-
+            return;
+        }
+        index = (index + 1) % map->capacity;
+    }
 }
+
 
 Pair * searchMap(HashMap * map,  char * key) {   
 
